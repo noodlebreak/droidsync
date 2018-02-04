@@ -1,0 +1,13 @@
+[transport]
+RESPONSE_READ_CHUNK_SIZE: 1024
+sync_machine_ip: 127.0.0.1
+sync_machine_port: 8000
+exchange_server_host: 
+exchange_server_port: 
+
+[dirconfig]
+# Dir to be considered for sync
+sync_dir: /tmp/synctest
+# Pass `true` if yes, anything else for no.
+auto_create_sync_dir: true
+
