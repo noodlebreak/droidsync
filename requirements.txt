@@ -1,0 +1,9 @@
+click==6.7
+expiringdict==1.1.4
+ipdb==0.10.3
+ipython==5.5.0
+pip-autoremove==0.9.0
+prompt-toolkit==1.0.15
+ptyprocess==0.5.2
+requests==2.18.4
+watchdog==0.8.3
