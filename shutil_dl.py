@@ -16,7 +16,7 @@ from utils import ResponseSaved
 
 
 def download(file_path, url="https://speed.hetzner.de/100MB.bin", silent=False, headers={}):
-    if not (url and silent):
+    if not (url or silent):
         raise Exception("File URL not given")
     elif silent and not url:
         result = ResponseSaved(error_message="URL is empty")
@@ -27,11 +27,12 @@ def download(file_path, url="https://speed.hetzner.de/100MB.bin", silent=False, 
 
     if not r.ok:
         result = ResponseSaved(not_ok_reason=r.reason)
+    import os; print("Current dir: {}".format(os.getcwd()))
     with open(local_filename, 'wb') as local_file:
         shutil.copyfileobj(r.raw, local_file)
 
     time_taken = time.time() - start
-    print("Time taken: {}".format(time_taken))
+    print("URL:{}; Time taken: {}".format(url, time_taken))
 
     result = ResponseSaved(saved_to=local_filename, time_taken=time_taken)
     return result
