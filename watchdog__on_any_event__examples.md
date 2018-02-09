@@ -27,3 +27,10 @@ MOVED
 MOVED OUT OF WATCHED DIR
     ppp was moved to /tmp/
     on_any_event: ('deleted', '/tmp/www/ppp', True)
+
+
+## Watch dir not from root:
+    Watching: www
+    Event: ('created', 'www/jack', False)
+    Event: ('deleted', 'www/dir', True)
+

@@ -13,12 +13,13 @@ COL_TYPE_MAP = {
 }
 
 
-class Accountant(object):
+class TheAccountant(object):
 
     def __init__(self, *args, **kwargs):
         self.db_name = kwargs.get('db_name')
         self.connection = self._get_db_connection()
         self.table_name = kwargs.get('table_name')
+        self._create_table_if_not_exists()
         column_creation_statements = []
         column_info = kwargs['column_info']
         for col in column_info:
@@ -41,6 +42,13 @@ class Accountant(object):
     def _format_kwargs(self, key_value_pairs):
         val = ", ".join("{}={}".format(key, val) for key, val in key_value_pairs.items())
         return val
+
+    def _create_table_if_not_exists(self):
+        exists = self.connection.execute()
+
+        # TODO - check if self.table_name table exists. If not, create it
+        if not exists:
+            self.create_table()
 
     def create_table(self, **kwargs):
         """

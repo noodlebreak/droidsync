@@ -10,4 +10,7 @@ exchange_server_port:
 sync_dir: /tmp/synctest
 # Pass `true` if yes, anything else for no.
 auto_create_sync_dir: true
+watch_recursive: true
 
+[web_server]
+port: 8000
